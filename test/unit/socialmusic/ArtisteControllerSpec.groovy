@@ -14,8 +14,8 @@ class ArtisteControllerSpec extends Specification {
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
     }
-/*
-    void "Test the index action returns the correct model"() {
+
+    /*void "Test the index action returns the correct model"() {
 
         when:"The index action is executed"
             controller.index()
