@@ -14,7 +14,7 @@ class ArtisteSpec extends Specification {
 
     def cleanup() {
     }
-/*
+
     void "test something"() {
-    }*/
+    }
 }

@@ -15,6 +15,11 @@ class ArtisteControllerSpec extends Specification {
         //params["name"] = 'someValidName'
     }
 
+    void "Test vide"() {
+        when: "Rien"
+        then: "Rien"
+    }
+
     /*void "Test the index action returns the correct model"() {
 
         when:"The index action is executed"

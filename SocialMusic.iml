@@ -40,6 +40,7 @@
       <sourceFolder url="file://$MODULE_DIR$/test/unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test/integration" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/work/plugin-build-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/work/plugin-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/work/plugin-provided-classes" />
@@ -86,7 +87,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="SocialMusic-grailsPlugins" />
-    <orderEntry type="library" name="grails-2.3.11" level="application" />
     <orderEntry type="library" name="grails-2.3.11" level="application" />
   </component>
 </module>
