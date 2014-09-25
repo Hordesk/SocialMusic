@@ -14,7 +14,7 @@ class ArtisteControllerSpec extends Specification {
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
     }
-
+/*
     void "Test the index action returns the correct model"() {
 
         when:"The index action is executed"
@@ -145,5 +145,5 @@ class ArtisteControllerSpec extends Specification {
             Artiste.count() == 0
             response.redirectedUrl == '/artiste/index'
             flash.message != null
-    }
+    }*/
 }
