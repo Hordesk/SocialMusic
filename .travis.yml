@@ -6,3 +6,4 @@ deploy:
   provider: heroku
   api_key:
     secure: vCkSLncAFfg6ra33T36gSzk5xtzJh0CqnnVkiBJw9SHPMc9wuFMTmnCwymawJztdJifaQDkvK/aWTRNl1feqSgg2rPVI30g+APLRzJfO27EYHz+dVFevvM2d39zDrugcznfQGqQ5/9MingYyDJuwgPOoomf7SS7RPNIEp1Tnta4=
+    app: socialmusicm2dl
