@@ -1,9 +1,8 @@
 language: groovy
 jdk:
 - oraclejdk8
-script: './grailsw refresh-dependencies && ./grailsw test-app unit:'
+script: './grailsw test-app unit:'
 deploy:
   provider: heroku
-  api_key:
-    secure: "vCkSLncAFfg6ra33T36gSzk5xtzJh0CqnnVkiBJw9SHPMc9wuFMTmnCwymawJztdJifaQDkvK/aWTRNl1feqSgg2rPVI30g+APLRzJfO27EYHz+dVFevvM2d39zDrugcznfQGqQ5/9MingYyDJuwgPOoomf7SS7RPNIEp1Tnta4="
-    app: socialmusicm2dl
+  api_key: "11cf512c-704c-4243-ad1f-6f26edaaf4a1"
+  app: socialmusicm2dl
