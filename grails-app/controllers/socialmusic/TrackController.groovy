@@ -1,7 +1,5 @@
 package socialmusic
 
 class TrackController {
-
-    //def index() { }
-    def scaffold = Track
+    static scaffold = true
 }
