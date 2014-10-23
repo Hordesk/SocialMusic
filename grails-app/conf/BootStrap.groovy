@@ -9,9 +9,9 @@ class BootStrap {
         def user2 = new User(name: "User 2", password: "mdp2").save(failOnError: true)
         def user3 = new User(name: "User 3", password: "mdp3").save(failOnError: true)
 
-        def track1 = new Track(title: "Track 1", artist: "Artiste 1", album: "Album 1").save(failOnError: true)
-        def track2 = new Track(title: "Track 2", artist: "Artiste 1", album: "Album 2").save(failOnError: true)
-        def track3 = new Track(title: "Track 3", artist: "Artiste 2", album: "Album 3").save(failOnError: true)
+        def track1 = new Track(title: "Track 1", artist: "Artist 1", album: "Album 1").save(failOnError: true)
+        def track2 = new Track(title: "Track 2", artist: "Artist 1", album: "Album 2").save(failOnError: true)
+        def track3 = new Track(title: "Track 3", artist: "Artist 2", album: "Album 3").save(failOnError: true)
 
 //        user1.addToTracks(track1).save(failOnError: true)
 //
