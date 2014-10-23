@@ -35,7 +35,7 @@ class ArtistControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.artisteInstance!= null
+            model.artistInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -138,7 +138,7 @@ class ArtistControllerSpec extends Specification {
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def artist = new Artiste(params).save(flush: true)
+            def artist = new Artist(params).save(flush: true)
 
         then:"It exists"
             Artiste.count() == 1
