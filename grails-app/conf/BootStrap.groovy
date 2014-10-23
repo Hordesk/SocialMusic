@@ -13,14 +13,14 @@ class BootStrap {
         def track2 = new Track(title: "Track 2", artist: "Artiste 1", album: "Album 2").save(failOnError: true)
         def track3 = new Track(title: "Track 3", artist: "Artiste 2", album: "Album 3").save(failOnError: true)
 
-        user1.addToTracks(track1).save(failOnError: true)
-
-        user2.addToTracks(track1).save(failOnError: true)
-        user2.addToTracks(track2).save(failOnError: true)
-
-        user3.addToTracks(track1).save(failOnError: true)
-        user3.addToTracks(track2).save(failOnError: true)
-        user3.addToTracks(track3).save(failOnError: true)
+//        user1.addToTracks(track1).save(failOnError: true)
+//
+//        user2.addToTracks(track1).save(failOnError: true)
+//        user2.addToTracks(track2).save(failOnError: true)
+//
+//        user3.addToTracks(track1).save(failOnError: true)
+//        user3.addToTracks(track2).save(failOnError: true)
+//        user3.addToTracks(track3).save(failOnError: true)
     }
 
     def destroy = {
