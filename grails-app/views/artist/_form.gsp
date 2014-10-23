@@ -1,8 +1,8 @@
-<%@ page import="socialmusic.Artiste" %>
+<%@ page import="socialmusic.Artist" %>
 
 
 
-<div class="fieldcontain ${hasErrors(bean: artisteInstance, field: 'nom', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: artisteInstance, field: 'title', 'error')} required">
     <label for="nom">
         <g:message code="artiste.nom.label" default="Nom"/>
         <span class="required-indicator">*</span>

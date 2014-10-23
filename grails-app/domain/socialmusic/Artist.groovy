@@ -1,6 +1,6 @@
 package socialmusic
 
-class Artiste {
+class Artist {
 
     static constraints = {
     }

@@ -19,8 +19,8 @@ class UserSpec extends Specification {
     @Unroll
     void "Name of user should be unique : #aName1, #aName2"() {
         given: "Two users"
-        def u1 = new User(name: aName1)
-        def u2 = new User(name: aName2)
+        def u1 = new User(name: aName1, password: "password1")
+        def u2 = new User(name: aName2, password: "paswword2")
 
         mockForConstraintsTests(User, [u1])
 
@@ -39,9 +39,9 @@ class UserSpec extends Specification {
         "unique1"       | "unique2"       | true      | true
     }
 
-    void "Should enforce name not blank constraint"() {
+    void "Should enforce name and password not blank constraint"() {
         given: "A User"
-        def u1 = new User(name: aName)
+        def u1 = new User(name: aName, password: "lol")
 
         when: "the User is validated"
         def valid = u1.validate()
@@ -50,9 +50,9 @@ class UserSpec extends Specification {
         valid == expected
 
         where:
-        aName      | expected
-        ""         | false
-        null       | false
-        "goodName" | true
+        aName          | aPassword           | expected
+        ""             | ""                  | false
+        null           | null                | false
+        "notBlankName" | "notBlanckPassword" | true
     }
 }

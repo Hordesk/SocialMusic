@@ -1,17 +1,18 @@
 package socialmusic
 
-class Musique {
+class Track {
 
-    String nom
-    String artiste
+    String title
+    String artist
     String album
 
-    static hasMany = [membre: Membre]
-    static belongsTo = [Membre]
+    // Will be added in later
+//    static hasMany = [users: User]
+//    static belongsTo = [Track]
 
     static constraints = {
-        nom(blank: false)
-        artiste(blank: false)
+        title(blank: false)
+        artist(blank: false)
         album(blank: false)
     }
 }

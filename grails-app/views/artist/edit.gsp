@@ -1,9 +1,9 @@
-<%@ page import="socialmusic.Artiste" %>
+<%@ page import="socialmusic.Artist" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'artiste.label', default: 'Artiste')}"/>
+    <g:set var="entityName" value="${message(code: 'artist.label', default: 'Artiste')}"/>
     <title><g:message code="default.edit.label" args="[entityName]"/></title>
 </head>
 

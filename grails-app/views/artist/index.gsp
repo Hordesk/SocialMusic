@@ -1,9 +1,9 @@
-<%@ page import="socialmusic.Artiste" %>
+<%@ page import="socialmusic.Artist" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'artiste.label', default: 'Artiste')}"/>
+    <g:set var="entityName" value="${message(code: 'artist.label', default: 'Artiste')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
 
@@ -28,7 +28,7 @@
         <thead>
         <tr>
 
-            <g:sortableColumn property="nom" title="${message(code: 'artiste.nom.label', default: 'Nom')}"/>
+            <g:sortableColumn property="nom" title="${message(code: 'artist.title.label', default: 'Nom')}"/>
 
         </tr>
         </thead>
@@ -37,7 +37,7 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show"
-                            id="${artisteInstance.id}">${fieldValue(bean: artisteInstance, field: "nom")}</g:link></td>
+                            id="${artisteInstance.id}">${fieldValue(bean: artisteInstance, field: "title")}</g:link></td>
 
             </tr>
         </g:each>
