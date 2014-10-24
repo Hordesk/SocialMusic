@@ -16,11 +16,12 @@ class UserSpec extends Specification {
     def cleanup() {
     }
 
+
     @Unroll
-    void "Name of user should be unique : #aName1, #aName2"() {
+    void "username of user should be unique : #ausername1, #ausername2"() {
         given: "Two users"
-        def u1 = new User(name: aName1, password: "password1")
-        def u2 = new User(name: aName2, password: "paswword2")
+        def u1 = new User(username: ausername1, password: "password1")
+        def u2 = new User(username: ausername2, password: "paswword2")
 
         mockForConstraintsTests(User, [u1])
 
@@ -33,15 +34,15 @@ class UserSpec extends Specification {
         saved2 == expected2
 
         where:
-        aName1          | aName2          | expected1 | expected2
-        "duplicateName" | "duplicateName" | true      | false
-        null            | "goodname"      | false     | true
-        "unique1"       | "unique2"       | true      | true
+        ausername1      | ausername2          | expected1 | expected2
+        "duplicateusername" | "duplicateusername" | true      | false
+        null                | "goodusername"      | false     | true
+        "unique1"           | "unique2"           | true      | true
     }
 
-    void "Should enforce name and password not blank constraint"() {
+    void "Should enforce username and password not blank constraint"() {
         given: "A User"
-        def u1 = new User(name: aName, password: "lol")
+        def u1 = new User(username: ausername, password: aPassword)
 
         when: "the User is validated"
         def valid = u1.validate()
@@ -50,9 +51,9 @@ class UserSpec extends Specification {
         valid == expected
 
         where:
-        aName          | aPassword           | expected
-        ""             | ""                  | false
-        null           | null                | false
-        "notBlankName" | "notBlanckPassword" | true
+        ausername          | aPassword           | expected
+        ""                 | ""                  | false
+        null               | null                | false
+        "notBlankusername" | "notBlanckPassword" | true
     }
 }

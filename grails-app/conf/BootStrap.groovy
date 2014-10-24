@@ -1,3 +1,5 @@
+import socialmusic.SecRole
+import socialmusic.SecUser
 import socialmusic.Track
 import socialmusic.Track
 import socialmusic.User
@@ -5,9 +7,11 @@ import socialmusic.User
 class BootStrap {
 
     def init = { servletContext ->
-        def user1 = new User(name: "User 1", password: "mdp1").save(failOnError: true)
-        def user2 = new User(name: "User 2", password: "mdp2").save(failOnError: true)
-        def user3 = new User(name: "User 3", password: "mdp3").save(failOnError: true)
+
+
+        def secUser1 = new SecUser(username: "User1", password: "mdp1").save(failOnError: true)
+        def secUser2 = new User(username: "User2", password: "mdp1").save(failOnError: true)
+        def userRole = SecRole.findByAuthority('ROLE_USER') ?: new SecRole(authority: 'ROLE_USER').save(failOnError: true)
 
         def track1 = new Track(title: "Track 1", artist: "Artist 1", album: "Album 1").save(failOnError: true)
         def track2 = new Track(title: "Track 2", artist: "Artist 1", album: "Album 2").save(failOnError: true)
