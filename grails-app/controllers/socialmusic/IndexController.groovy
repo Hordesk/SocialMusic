@@ -1,5 +1,7 @@
 package socialmusic
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class IndexController {
 
     def index() {
