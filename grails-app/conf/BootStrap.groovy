@@ -9,17 +9,18 @@ class BootStrap {
 
     def init = { servletContext ->
 
-
-        def secUser2 = new User(username: "User", password: "mdp1").save(failOnError: true, flush: true)
+        def secUser1 = new User(username: "User", password: "mdp1").save(failOnError: true, flush: true)
+        def secUser2 = new User(username: "User2", password: "mdp2").save(failOnError: true, flush: true)
 
         def adminRole = new SecRole(authority: 'ROLE_ADMIN').save(flush: true)
         def userRole = new SecRole(authority: 'ROLE_USER').save(flush: true)
 
-        SecUserSecRole.create secUser2, adminRole, true
+        SecUserSecRole.create secUser1, adminRole, true
+        SecUserSecRole.create secUser2, userRole, true
 
-        assert User.count() == 1
+        assert User.count() == 2
         assert SecRole.count() == 2
-        assert SecUserSecRole.count() == 1
+        assert SecUserSecRole.count() == 2
 
 
         def track1 = new Track(title: "Track 1", artist: "Artist 1", album: "Album 1").save(failOnError: true)
