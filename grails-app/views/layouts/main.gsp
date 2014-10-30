@@ -36,10 +36,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <sec:ifLoggedIn>
-                        <span class="icon-bar"></span>
-                    </sec:ifLoggedIn>
-
 
                 </button>
                 <a class="navbar-brand" href="${createLink(controller:'index', action:'index')}">Social Music</a>
@@ -50,6 +46,7 @@
                     <li><a href="#about">Artistes</a></li>
                     <li><a href="#contact">Noter une musique</a></li>
                     <sec:ifNotLoggedIn>
+                        <li><a  href="${createLink(controller:'user', action: 'register')}">${message(code: 'user.register.label', default: 'Register')}</a></li>
                         <li><a  href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>
                     </sec:ifNotLoggedIn>
                 %{--blok de l'utilisateur courrent--}%

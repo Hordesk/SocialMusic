@@ -34,6 +34,15 @@ class UserControllerSpec extends Specification {
             model.userInstance!= null
     }
 
+
+    void "Test the register action returns the correct model"() {
+        when:"The register action is executed"
+        controller.register()
+
+        then:"The model is correctly created"
+        model.userInstance!= null
+    }
+
     void "Test the save action correctly persists an instance"() {
 
         when:"The save action is executed with an invalid instance"

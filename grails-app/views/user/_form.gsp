@@ -20,37 +20,37 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} " style="display: none;">
 	<label for="accountExpired">
 		<g:message code="user.accountExpired.label" default="Account Expired" />
-		
+
 	</label>
 	<g:checkBox name="accountExpired" value="${userInstance?.accountExpired}" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountLocked', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountLocked', 'error')} " style="display: none;">
 	<label for="accountLocked">
 		<g:message code="user.accountLocked.label" default="Account Locked" />
-		
+
 	</label>
 	<g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'enabled', 'error')} " style="display: none;">
 	<label for="enabled">
 		<g:message code="user.enabled.label" default="Enabled" />
-		
+
 	</label>
 	<g:checkBox name="enabled" value="${userInstance?.enabled}" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'passwordExpired', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'passwordExpired', 'error')} " style="display: none;">
 	<label for="passwordExpired">
 		<g:message code="user.passwordExpired.label" default="Password Expired" />
-		
+
 	</label>
 	<g:checkBox name="passwordExpired" value="${userInstance?.passwordExpired}" />
 
