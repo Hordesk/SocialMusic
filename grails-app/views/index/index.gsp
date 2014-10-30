@@ -9,6 +9,7 @@
 		<div id="page-body" role="main">
 			<h1>Bienvenue sur le réseau social de la musique!!</h1>
 
+
             <div id="user-list">
 
             <table class="table">
