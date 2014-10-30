@@ -11,7 +11,7 @@
 
             <div id="user-list">
 
-            <table>
+            <table class="table">
                 <thead>
                 <tr>
 
