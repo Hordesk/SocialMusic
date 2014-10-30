@@ -126,13 +126,16 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'socialmusic.SecUs
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'socialmusic.SecUserSecRole'
 grails.plugin.springsecurity.authority.className = 'socialmusic.SecRole'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/**':                              ['permitAll'],
+	'/':                              ['permitAll'],
 	'/index':                         ['permitAll'],
+    '/index/**':                      ['permitAll'],
 	'/index.gsp':                     ['permitAll'],
 	'/assets/**':                     ['permitAll'],
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
+	'/**/favicon.ico':                ['permitAll'],
+    '/login/**'        : ['permitAll'],
+    '/logout/**'       : ['permitAll']
 ]
 
