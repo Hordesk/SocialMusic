@@ -36,11 +36,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Social Music</a>
+                <a class="navbar-brand" href="${createLink(controller:'index', action:'index')}">Social Music</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Accueil</a></li>
+                    <li><a href="">Membres</a></li>
                     <li><a href="#about">Artistes</a></li>
                     <li><a href="#contact">Noter une musique</a></li>
                 </ul>
