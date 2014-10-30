@@ -9,7 +9,6 @@ class BootStrap {
 
     def init = { servletContext ->
 
-
         def secUser1 = new User(username: "User", password: "mdp1").save(failOnError: true, flush: true)
         def secUser2 = new User(username: "User2", password: "mdp2").save(failOnError: true, flush: true)
 

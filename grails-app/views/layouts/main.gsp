@@ -35,6 +35,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <sec:ifLoggedIn>
+                        <span class="icon-bar"></span>
+                    </sec:ifLoggedIn>
+
+
                 </button>
                 <a class="navbar-brand" href="${createLink(controller:'index', action:'index')}">Social Music</a>
             </div>
@@ -43,6 +49,17 @@
                     <li><a href="">Membres</a></li>
                     <li><a href="#about">Artistes</a></li>
                     <li><a href="#contact">Noter une musique</a></li>
+                    <sec:ifNotLoggedIn>
+                        <li><a  href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>
+                    </sec:ifNotLoggedIn>
+                %{--blok de l'utilisateur courrent--}%
+                    <sec:ifLoggedIn>
+
+                        <li> <a href="#currentUser"><sec:username /> </a> </li>
+                        <li> <a  href="${createLink(controller:'logout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
+
+                    </sec:ifLoggedIn>
+                %{--blok de l'utilisateur courrent--}%
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
