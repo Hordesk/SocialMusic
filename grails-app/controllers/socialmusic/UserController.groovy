@@ -23,6 +23,10 @@ class UserController {
         respond new User(params)
     }
 
+    def register() {
+        respond new User(params)
+    }
+
     @Transactional
     def save(User userInstance) {
         if (userInstance == null) {
