@@ -11,8 +11,9 @@ class TrackControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["title"] = 'titre'
+        params["artist"] = 'artiste'
+        params["album"] = 'album'
     }
 
     void "Test the index action returns the correct model"() {

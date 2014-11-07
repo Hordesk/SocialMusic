@@ -14,4 +14,8 @@ class Track {
         artist(blank: false)
         album(blank: false)
     }
+
+   public String toString(){
+        title
+    }
 }
