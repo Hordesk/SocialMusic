@@ -6,10 +6,9 @@ class Track {
     String artist
     String album
 
-    // Will be added in later
-//    static hasMany = [users: User]
-//    static belongsTo = [Track]
 
+
+    static hasMany = [grades : Grade]
     static constraints = {
         title(blank: false)
         artist(blank: false)

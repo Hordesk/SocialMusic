@@ -47,6 +47,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'grades', 'error')} ">
+	<label for="grades">
+		<g:message code="user.grades.label" default="Grades" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${userInstance?.grades?}" var="g">
+    <li><g:link controller="grade" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="grade" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'grade.label', default: 'Grade')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'passwordExpired', 'error')} ">
 	<label for="passwordExpired">
 		<g:message code="user.passwordExpired.label" default="Password Expired" />

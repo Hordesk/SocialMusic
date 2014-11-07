@@ -1,3 +1,4 @@
+
 <%@ page import="socialmusic.User" %>
 <!DOCTYPE html>
 <html>
@@ -5,7 +6,6 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
-
 	</head>
 	<body>
 		<a href="#show-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -64,6 +64,17 @@
 					<span id="enabled-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
 					
 						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${userInstance?.enabled}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.grades}">
+				<li class="fieldcontain">
+					<span id="grades-label" class="property-label"><g:message code="user.grades.label" default="Grades" /></span>
+					
+						<g:each in="${userInstance.grades}" var="g">
+						<span class="property-value" aria-labelledby="grades-label"><g:link controller="grade" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
