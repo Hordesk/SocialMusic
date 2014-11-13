@@ -53,7 +53,7 @@
                     <sec:ifLoggedIn>
 
                         <li> <a href="#currentUser"><sec:username /> </a> </li>
-                        <li> <a  href="${createLink(controller:'myL ogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
+                        <li> <a  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
 
                     </sec:ifLoggedIn>
                 %{--blok de l'utilisateur courrent--}%
