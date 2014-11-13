@@ -6,14 +6,16 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(UserController)
-@Mock(User)
+@Mock([User, SecUserSecRole, UserService])
 class UserControllerSpec extends Specification {
+
+    def myUserService = new UserService()
 
     def populateValidParams(params) {
         assert params != null
         params["username"] = 'user2'
         params["password"] = 'mdp2'
-        params["name"] = 'someValidName'
+        params["id"] = 1
     }
 
     void "Test the index action returns the correct model"() {
@@ -26,15 +28,6 @@ class UserControllerSpec extends Specification {
             model.userInstanceCount == 0
     }
 
-    void "Test the create action returns the correct model"() {
-        when:"The create action is executed"
-            controller.create()
-
-        then:"The model is correctly created"
-            model.userInstance!= null
-    }
-
-
     void "Test the register action returns the correct model"() {
         when:"The register action is executed"
         controller.register()
@@ -45,27 +38,33 @@ class UserControllerSpec extends Specification {
 
     void "Test the save action correctly persists an instance"() {
 
-        when:"The save action is executed with an invalid instance"
-            request.contentType = FORM_CONTENT_TYPE
-            def user = new User()
-            user.validate()
-            controller.save(user)
+        setup:
+        def userService = Mock(UserService)
+        controller.userService = userService
 
-        then:"The create view is rendered again with the correct model"
-            model.userInstance!= null
-            view == 'create'
+        when:"The save action is executed with an invalid instance"
+        request.contentType = FORM_CONTENT_TYPE
+        def user = new User()
+        user.validate()
+        controller.save(user)
+
+        then:"The register view is rendered again with the correct model"
+        model.userInstance!= null
+        view == 'register'
 
         when:"The save action is executed with a valid instance"
-            response.reset()
-            populateValidParams(params)
-            user = new User(params)
+        response.reset()
+        populateValidParams(params)
+        user = new User(params)
+        mockDomain(User, [user])
 
-            controller.save(user)
+        controller.save(user)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/user/show/1'
-            controller.flash.message != null
-            User.count() == 1
+        response.redirectedUrl == '/user/show/1'
+        controller.flash.message != null
+
+        1 * userService.registerUser(_ as User)
     }
 
     void "Test that the show action returns the correct model"() {

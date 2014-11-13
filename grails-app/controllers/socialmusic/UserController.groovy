@@ -1,12 +1,14 @@
 package socialmusic
 
-
+import grails.transaction.Transactional
+import org.springframework.security.access.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class UserController {
+
+    UserService userService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -17,10 +19,6 @@ class UserController {
 
     def show(User userInstance) {
         respond userInstance
-    }
-
-    def create() {
-        respond new User(params)
     }
 
     def register() {
@@ -35,25 +33,27 @@ class UserController {
         }
 
         if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'create'
+            respond userInstance.errors, view:'register'
             return
         }
 
-        userInstance.save flush:true
+        userService.registerUser(userInstance)
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+                flash.message = message(code: 'default.registered.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
                 redirect userInstance
             }
             '*' { respond userInstance, [status: CREATED] }
         }
     }
 
+    @Secured(['ROLE_USER'])
     def edit(User userInstance) {
         respond userInstance
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def update(User userInstance) {
         if (userInstance == null) {
@@ -77,6 +77,7 @@ class UserController {
         }
     }
 
+    @Secured(['ROLE_USER'])
     @Transactional
     def delete(User userInstance) {
 
