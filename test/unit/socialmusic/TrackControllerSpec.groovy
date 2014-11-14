@@ -34,7 +34,7 @@ class TrackControllerSpec extends Specification {
             model.trackInstance!= null
     }
 
-    void "Test the save action correctly persists an instance"() {
+    /*void "Test the save action correctly persists an instance"() {
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
@@ -57,7 +57,7 @@ class TrackControllerSpec extends Specification {
             response.redirectedUrl == '/track/show/1'
             controller.flash.message != null
             Track.count() == 1
-    }
+    }*/
 
     void "Test that the show action returns the correct model"() {
         when:"The show action is executed with a null domain"

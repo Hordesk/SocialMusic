@@ -20,6 +20,8 @@ Liens utiles
 ------------
 Application déployée sur Heroku : http://socialmusicm2dl.herokuapp.com/
 
+Plateforme Travis : https://travis-ci.org/Hordesk/SocialMusic
+
 Kanban sur trello : https://trello.com/b/F6FMGKpq/socialmusic
 
 Lien du dépot github : https://github.com/Hordesk/SocialMusic
