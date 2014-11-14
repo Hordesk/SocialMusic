@@ -106,4 +106,10 @@ class UserController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    public void bibliotheque(){
+        //definir une methode qui permet de recuperer la liste des musique pour l'utilisateur courrant
+
+    }
+
 }

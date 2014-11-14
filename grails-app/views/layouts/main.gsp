@@ -48,12 +48,16 @@
                     <sec:ifNotLoggedIn>
                         <li><a  href="${createLink(controller:'user', action: 'register')}">${message(code: 'user.register.label', default: 'Register')}</a></li>
                         <li><a  href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>
+
                     </sec:ifNotLoggedIn>
                 %{--blok de l'utilisateur courrent--}%
                     <sec:ifLoggedIn>
 
                         <li> <a href="#currentUser"><sec:username /> </a> </li>
+
                         <li> <a  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
+                        <li><a  href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
+                        <li><a  href="bibliotheque.gsp">${message(code: 'track.showList', default: 'Ma bibliothèque')}</a></li>
 
                     </sec:ifLoggedIn>
                 %{--blok de l'utilisateur courrent--}%

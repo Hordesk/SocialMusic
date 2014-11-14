@@ -1,12 +1,13 @@
 package socialmusic
 
-
+import grails.plugin.springsecurity.SpringSecurityService
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class TrackController {
+    TrackService trackService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,6 +26,7 @@ class TrackController {
 
     @Transactional
     def save(Track trackInstance) {
+
         if (trackInstance == null) {
             notFound()
             return
@@ -34,8 +36,7 @@ class TrackController {
             respond trackInstance.errors, view:'create'
             return
         }
-
-        trackInstance.save flush:true
+            trackService.addTrack(trackInstance)
 
         request.withFormat {
             form multipartForm {
@@ -43,7 +44,10 @@ class TrackController {
                 redirect trackInstance
             }
             '*' { respond trackInstance, [status: CREATED] }
+
         }
+
+
     }
 
     def edit(Track trackInstance) {
