@@ -29,12 +29,13 @@
 
 </div>
 
+%{--
 <div class="fieldcontain ${hasErrors(bean: trackInstance, field: 'grades', 'error')} ">
 	<label for="grades">
 		<g:message code="track.grades.label" default="Grades" />
-		
+
 	</label>
-	
+
 <ul class="one-to-many">
 <g:each in="${trackInstance?.grades?}" var="g">
     <li><g:link controller="grade" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
@@ -46,4 +47,5 @@
 
 
 </div>
+--}%
 

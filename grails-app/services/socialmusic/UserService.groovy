@@ -1,10 +1,16 @@
 package socialmusic
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.transaction.Transactional
 import socialmusic.SecRole
 
 @Transactional
 class UserService {
+    SpringSecurityService springSecurityService
+
+    def currentUser() {
+        return (User) User.get(springSecurityService.principal.id);
+    }
 
     def registerUser(User user) {
         user.save flush:true
