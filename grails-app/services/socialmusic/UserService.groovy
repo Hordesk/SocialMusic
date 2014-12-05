@@ -13,7 +13,7 @@ class UserService {
     }
 
     def registerUser(User user) {
-        user.save flush:true
+        user.save()
 
         def userRole = SecRole.findByAuthority("ROLE_USER")
         assert userRole.authority == "ROLE_USER"
