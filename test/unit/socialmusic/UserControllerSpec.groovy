@@ -9,8 +9,6 @@ import spock.lang.*
 @Mock([User, SecUserSecRole, UserService])
 class UserControllerSpec extends Specification {
 
-    def myUserService = new UserService()
-
     def populateValidParams(params) {
         assert params != null
         params["username"] = 'user2'
