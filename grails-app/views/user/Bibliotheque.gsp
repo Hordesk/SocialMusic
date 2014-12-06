@@ -5,13 +5,57 @@
   Time: 23:40
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-</head>
+    <meta name="layout" content="main"/>
+    <title>Welcome to Grails</title>
 
+</head>
 <body>
-hiii
+<div id="page-body" role="main">
+    <h1>Voila votre bibliotheque</h1>
+
+
+    <div id="user-list">
+
+        <table class="table">
+   <caption>Bibliotheque</caption>
+   <thead>
+      <tr>
+         <th>Artist</th>
+         <th>album</th>
+
+      </tr>
+   </thead>
+   <tbody>
+   <g:each in="${grades}"  var="grade">
+   <tr class="success">
+
+       <td>${grade.track.artist}</td>
+       <td>${grade.track.album}</td>
+
+   </tr>
+   </g:each>
+
+
+   <!--  <tr class="active">
+        <td>Product1</td>
+        <td>23/11/2013</td>
+        <td>Pending</td>
+     </tr> -->
+
+
+
+
+   </tbody>
+</table>
+
+
+    </div>
+
+
+</div>
+
 </body>
 </html>

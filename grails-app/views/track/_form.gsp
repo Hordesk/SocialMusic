@@ -4,7 +4,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: trackInstance, field: 'title', 'error')} required">
 	<label for="title">
-		<g:message code="track.title.label" default="Title" />
+		<g:message code="track.title.label" default="Titre" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="title" required="" value="${trackInstance?.title}"/>

@@ -57,7 +57,7 @@
 
                         <li> <a  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
                         <li><a  href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
-                        <li><a  href="bibliotheque.gsp">${message(code: 'track.showList', default: 'Ma bibliothèque')}</a></li>
+                        <li><a  href="${createLink(controller:'user', action: 'bibliotheque')}">${message(code: 'track.showList', default: 'Ma bibliothèque')}</a></li>
 
                     </sec:ifLoggedIn>
                 %{--blok de l'utilisateur courrent--}%

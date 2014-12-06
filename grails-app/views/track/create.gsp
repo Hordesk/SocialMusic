@@ -6,7 +6,7 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-
+    <center>
 		<div id="create-track" class="content scaffold-create" role="main">
 			<h1><g:message code="Ajouter une musique" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -28,5 +28,6 @@
 				</fieldset>
 			</g:form>
 		</div>
+    </center>
 	</body>
 </html>

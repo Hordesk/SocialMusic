@@ -9,5 +9,6 @@ class Grade {
 
     static constraints = {
     }
-
+   String tostring() {
+    return grade}
 }

@@ -9,6 +9,7 @@ import static org.springframework.http.HttpStatus.*
 class UserController {
 
     UserService userService
+    TrackService trackService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -107,9 +108,15 @@ class UserController {
         }
     }
 
-    public void bibliotheque(){
-        //definir une methode qui permet de recuperer la liste des musique pour l'utilisateur courrant
-
+    def bibliotheque(){
+     //   def map = [book: Book.get(params.id)]
+      //  render(view: "display", model: map)
+//redirect(controller: 'home', action: 'index')
+        def grades = trackService.getBibliothequeByUser()
+        for(grade in grades) {
+            println("haha" + grade.track.artist + " " + grade.track.title)
+        }
+        render(view: "bibliotheque", model:  [grades:grades])
     }
 
 }
