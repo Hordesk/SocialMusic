@@ -55,7 +55,7 @@
                 %{--blok de l'utilisateur courrent--}%
                     <sec:ifLoggedIn>
 
-                        <li> <a href="#currentUser"><sec:username /> </a> </li>
+                        <li> <a id="currentUser" href="${createLink(controller:'user', action: 'show', id : userInstance.id)}"><sec:username /> </a> </li>
 
                         <li> <a  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
                         <li><a  href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
