@@ -6,6 +6,8 @@ grails.project.work.dir = "target/work"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
+def gebVersion      = "0.9.3"
+def seleniumVersion = "2.43.1"
 
 grails.project.fork = [
     // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
@@ -50,7 +52,15 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.27'
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
+
         test "org.grails:grails-datastore-test-support:1.0-grails-2.3"
+
+        test "org.gebish:geb-junit4:$gebVersion"
+        test "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+        test "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+        test ("info.cukes:cucumber-groovy:1.1.7") {
+            excludes 'ant' // avoid ant version conflict
+        }
     }
 
     plugins {
@@ -70,6 +80,10 @@ grails.project.dependency.resolution = {
 
         test ":code-coverage:2.0.3-2"
         compile ":codenarc:0.22"
+
+        test ":geb:$gebVersion"
+        test ":cucumber:1.0.1"
+
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"
