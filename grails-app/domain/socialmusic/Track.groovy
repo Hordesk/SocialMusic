@@ -5,6 +5,7 @@ class Track {
     String title
     String artist
     String album
+    Integer totalGrade=0
 
 
 

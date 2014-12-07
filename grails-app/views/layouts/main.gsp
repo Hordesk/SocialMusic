@@ -44,7 +44,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="">Membres</a></li>
                     <li><a href="#about">Artistes</a></li>
-                    <li><a href="#contact">Noter une musique</a></li>
+<sec:ifLoggedIn>
+                    <li><a href="${createLink(controller:'grade', action: 'likeUnlike')}">Noter une musique</a></li>
+    </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <li><a  href="${createLink(controller:'user', action: 'register')}">${message(code: 'user.register.label', default: 'Register')}</a></li>
                         <li><a  href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>

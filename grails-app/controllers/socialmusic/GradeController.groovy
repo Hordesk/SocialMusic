@@ -7,6 +7,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class GradeController {
 
+    GradeService gradeService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -100,4 +101,29 @@ class GradeController {
             '*' { render status: NOT_FOUND }
         }
     }
+
+    def likeUnlike(){
+      def tracks=  Track.list();
+        /*
+        select sum(grade)as gradeTotal from track,grade
+                where grade.track.id=track.id
+                groupe by track
+
+                results = Work.executeQuery('select w.artist.style, count(w) from Work as w group by w.artist.style')
+        * */
+        for(track in tracks)
+        {
+         def grades = Grade.findAllByTrack(track)
+            for(grade in grades)
+            {track.totalGrade+=grade.grade}
+        }
+
+         render(view: "likeUnlike", model:  [tracks:tracks])
+    }
+
+    def like(Track track)
+    {gradeService.like(track)}
+    def unlike(Track track)
+    {gradeService.unlike(track)}
+
 }
