@@ -1,6 +1,5 @@
 package socialmusic
 
-import grails.test.spock.IntegrationSpec
 import spock.lang.*
 
 /**
@@ -15,12 +14,6 @@ class UserIntegrationSpec extends Specification{
         params["username"] = 'user2'
         params["password"] = 'mdp2'
         params["id"] = 1
-    }
-
-    def setup() {
-    }
-
-    def cleanup() {
     }
 
     void "should register user"() {
@@ -45,7 +38,7 @@ class UserIntegrationSpec extends Specification{
 //
 //        User.first().getAuthorities().size() == 1
 //        User.first().getAuthorities().first() == SecRole.findByAuthority("ROLE_USER")
-
+        expect:
         assert true
     }
 }
