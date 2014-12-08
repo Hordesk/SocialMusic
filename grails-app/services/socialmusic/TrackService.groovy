@@ -7,12 +7,7 @@ import static org.springframework.http.HttpStatus.CREATED
 
 @Transactional
 class TrackService {
-    SpringSecurityService springSecurityService
     UserService userService
-
-    def serviceMethod() {
-
-    }
 
     def addTrack(Track trackInstance) {
         User currentUser = userService.currentUser()
