@@ -21,12 +21,10 @@ class GradeService {
         {
             grade.setGrade(1)
             grade.save flush: true
-
         }
         else{
             grade = new Grade(user: currentUser, track: track, grade: (Integer) 1)
             if (currentUser != null && grade.hasErrors() != true) {
-
                 //Ajouter une grade avec une Grade.grade = 1 et Grade.user = currentUser
                 grade.save flush: true
             }
@@ -39,15 +37,12 @@ class GradeService {
         def grade= Grade.findByTrackAndUser(track,currentUser)
         if(grade)
         {
-            def currentGrade= grade.getGrade()
-            grade.setGrade(currentGrade-1)
+            grade.setGrade(-1)
             grade.save flush: true
-
         }
         else{
             grade = new Grade(user: currentUser, track: track, grade: (Integer) -1)
             if (currentUser != null && grade.hasErrors() != true) {
-
                 //Ajouter une grade avec une Grade.grade = 1 et Grade.user = currentUser
                 grade.save flush: true
             }

@@ -42,7 +42,7 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="">Membres</a></li>
+                    <li><a href="${createLink(controller:'index', action:'index')}">Membres</a></li>
                     <li><a href="#about">Artistes</a></li>
 <sec:ifLoggedIn>
                     <li><a href="${createLink(controller:'grade', action: 'likeUnlike')}">Noter une musique</a></li>

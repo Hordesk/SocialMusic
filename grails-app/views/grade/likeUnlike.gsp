@@ -25,17 +25,19 @@
         <th>Artist</th>
         <th>album</th>
         <th>grade Total</th>
+        <th>Like</th>
+        <th>Unlike</th>
 
     </tr>
     </thead>
     <tbody>
     <g:each in="${tracks}"  var="track">
         <tr class="success">
-
             <td>${track.artist}</td>
             <td>${track.album}</td>
             <td>${track.totalGrade}</td>
-
+            <td> <g:link controller="grade" action="like" id="${track.id}">like</g:link></td>
+            <td> <g:link controller="grade" action="unlike" id="${track.id}">UnLike</g:link></td>
         </tr>
     </g:each>
 

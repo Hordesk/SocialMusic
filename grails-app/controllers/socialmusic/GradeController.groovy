@@ -103,7 +103,7 @@ class GradeController {
     }
 
     def likeUnlike(){
-      def tracks=  Track.list();
+
         /*
         select sum(grade)as gradeTotal from track,grade
                 where grade.track.id=track.id
@@ -111,7 +111,9 @@ class GradeController {
 
                 results = Work.executeQuery('select w.artist.style, count(w) from Work as w group by w.artist.style')
         * */
-        for(track in tracks)
+
+        def tracks=  Track.list();
+         for(track in tracks)
         {
          def grades = Grade.findAllByTrack(track)
             for(grade in grades)
@@ -121,9 +123,16 @@ class GradeController {
          render(view: "likeUnlike", model:  [tracks:tracks])
     }
 
-    def like(Track track)
-    {gradeService.like(track)}
-    def unlike(Track track)
-    {gradeService.unlike(track)}
+    def like(Long id)
+    {   def trackInstance=Track.findById(id)
+        gradeService.like(trackInstance)
+        redirect(action: "likeUnlike")
+
+    }
+    def unlike(Long id)
+    {   def trackInstance=Track.findById(id)
+        gradeService.unlike(trackInstance)
+        redirect(action: "likeUnlike")
+    }
 
 }
