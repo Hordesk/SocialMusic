@@ -8,5 +8,5 @@ Scenario: new user
   And I'm not logged in
   When I fill in user details "Dany" "mypass"
   And click Sign-up
-  Then I should be redirected to the "Show" page
+  Then I should be redirected to the "Show User" page
   And User displayed is "Dany"

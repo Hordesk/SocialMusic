@@ -1,5 +1,5 @@
-import pages.user.ShowPage
 import pages.user.RegisterPage
+import pages.user.ShowUserPage
 
 import static cucumber.api.groovy.EN.*
 
@@ -23,8 +23,8 @@ When(~/^click Sign-up$/) { ->
 
 Then(~/^I should be redirected to the "(.*?)" page$/) { String arg1 ->
     switch(arg1) {
-        case 'Show':
-            at ShowPage
+        case 'Show User':
+            at ShowUserPage
     }
 }
 

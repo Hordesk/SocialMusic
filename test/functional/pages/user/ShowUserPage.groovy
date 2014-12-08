@@ -3,7 +3,7 @@ package pages.user
 /**
  * Created by legaliz_me on 12/6/14.
  */
-class ShowPage extends LayoutPage{
+class ShowUserPage extends LayoutPage{
     static at = {
         title ==~ /Show User/
     }
