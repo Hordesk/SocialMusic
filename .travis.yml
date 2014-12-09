@@ -1,7 +1,7 @@
 language: groovy
 jdk:
 - oraclejdk8
-script: './grailsw test-app'
+script: './grailsw test-app :unit'
 deploy:
   provider: heroku
   api_key: "11cf512c-704c-4243-ad1f-6f26edaaf4a1"
