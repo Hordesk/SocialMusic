@@ -3,7 +3,6 @@
 
 	See: http://www.gebish.org/manual/current/configuration.html
 */
-
 import org.openqa.selenium.firefox.FirefoxDriver
 
 driver = {

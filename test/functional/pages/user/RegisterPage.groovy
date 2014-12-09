@@ -9,5 +9,8 @@ class RegisterPage extends LayoutPage{
 
     static content = {
         createButton(to: ShowUserPage) { create() }
+
+        username { $('input', id: 'username')}
+        password { $('input', id: 'password')}
     }
 }
