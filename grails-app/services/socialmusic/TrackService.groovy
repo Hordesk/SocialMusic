@@ -7,12 +7,7 @@ import static org.springframework.http.HttpStatus.CREATED
 
 @Transactional
 class TrackService {
-    SpringSecurityService springSecurityService
     UserService userService
-
-    def serviceMethod() {
-
-    }
 
     def addTrack(Track trackInstance) {
         User currentUser = userService.currentUser()
@@ -30,7 +25,7 @@ class TrackService {
       /*  def gradeList=currentUser? Grade.findAllByUser(currentUser):[]
         def bibliotheque = Track.findAllByGrades(gradeList,sort:"artist", order:"asc")
           return bibliotheque*/
-      Grade.findAllByUserAndGradeGreaterThan(currentUser,-1)
+      Grade.findAllByUser(currentUser)
       /*  Track.where{
             grades.grade==0
         }*/

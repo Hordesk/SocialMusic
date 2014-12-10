@@ -1,6 +1,5 @@
 package socialmusic
 
-import grails.test.spock.IntegrationSpec
 import spock.lang.*
 
 /**

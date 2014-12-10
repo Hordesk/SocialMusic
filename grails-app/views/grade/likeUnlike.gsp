@@ -19,25 +19,26 @@
 
     <div id="user-list">
 <table class="table">
-    <caption>Lise des Musique</caption>
     <thead>
     <tr>
-        <th>Artist</th>
-        <th>album</th>
-        <th>grade Total</th>
+        <th>Titre</th>
+        <th>Artiste</th>
+        <th>Album</th>
+        <th>Note</th>
         <th>Like</th>
-        <th>Unlike</th>
+        <th>Dislike</th>
 
     </tr>
     </thead>
     <tbody>
     <g:each in="${tracks}"  var="track">
         <tr class="success">
+            <td>${track.title}</td>
             <td>${track.artist}</td>
             <td>${track.album}</td>
             <td>${track.totalGrade}</td>
-            <td> <g:link controller="grade" action="like" id="${track.id}">like</g:link></td>
-            <td> <g:link controller="grade" action="unlike" id="${track.id}">UnLike</g:link></td>
+            <td> <g:link controller="grade" action="like" id="${track.id}"><img src="../images/like.png" alt="" border=3 height=25 width=25/></g:link></td>
+            <td> <g:link controller="grade" action="unlike" id="${track.id}"><img src="../images/dislike.png" alt="" border=3 height=25 width=25/></g:link></td>
         </tr>
     </g:each>
 

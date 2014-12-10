@@ -34,7 +34,11 @@ class TrackControllerSpec extends Specification {
             model.trackInstance!= null
     }
 
-    /*void "Test the save action correctly persists an instance"() {
+    void "Test the save action correctly persists an instance"() {
+
+        setup:
+        def trackService = Mock(TrackService)
+        controller.trackService = trackService
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
@@ -50,14 +54,14 @@ class TrackControllerSpec extends Specification {
             response.reset()
             populateValidParams(params)
             track = new Track(params)
+            mockDomain(Track, [Track])
 
             controller.save(track)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/track/show/1'
-            controller.flash.message != null
-            Track.count() == 1
-    }*/
+            response.redirectedUrl == '/'
+            1 * trackService.addTrack(_ as Track)
+    }
 
     void "Test that the show action returns the correct model"() {
         when:"The show action is executed with a null domain"

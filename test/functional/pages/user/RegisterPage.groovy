@@ -1,7 +1,5 @@
 package pages.user
 
-import geb.Page
-
 class RegisterPage extends LayoutPage{
     static url = "user/register"
 
@@ -10,6 +8,9 @@ class RegisterPage extends LayoutPage{
     }
 
     static content = {
-        createButton(to: ShowPage) { create() }
+        createButton(to: ShowUserPage) { create() }
+
+        username { $('input', id: 'username')}
+        password { $('input', id: 'password')}
     }
 }

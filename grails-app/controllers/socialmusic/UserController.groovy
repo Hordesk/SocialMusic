@@ -19,7 +19,10 @@ class UserController {
     }
 
     def show(User userInstance) {
-        respond userInstance
+//redirect(controller: 'home', action: 'index')
+        def grades = trackService.getBibliothequeByUser()
+
+        render(view: "bibliotheque", model:  [grades:grades])
     }
 
     def register() {
