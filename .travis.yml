@@ -7,7 +7,7 @@ before-install:
   - sleep 10
 before-script:
   - "wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar"
-  - "java -jar selenium-server-standalone-2.43.1.jar > /dev/null &"
+  - "export DISPLAY=:99.0 xvfb-run --auto-servernum --server-num=0 nohup java - jar selenium-server-standalone-2.43.1.jar > /dev/null &"
   - "sleep 10"
 script: './grailsw test-app :unit functional:cucumber'
 deploy:
