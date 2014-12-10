@@ -12,16 +12,28 @@ class TrackRow extends Module {
             cell (column).text ()
         }
 
-        artist {
+        trackTitle {
             cellText (0)
         }
 
-        album {
+        artist {
             cellText (1)
         }
 
-        trackTitle {
+        album {
             cellText (2)
+        }
+
+        grade {
+            cellText (3)
+        }
+
+        like {
+            $('td a', 0)
+        }
+
+        unlike {
+            $('td a', 1)
         }
     }
 }

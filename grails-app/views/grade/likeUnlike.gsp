@@ -14,10 +14,10 @@
 
 <body>
 <div id="page-body" role="main">
-    <h1>Voila votre bibliotheque</h1>
+    <h1>Toute la musique</h1>
 
 
-    <div id="user-list">
+    <div id="tracks-list">
 <table class="table">
     <thead>
     <tr>

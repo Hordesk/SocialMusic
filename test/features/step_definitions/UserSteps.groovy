@@ -1,5 +1,6 @@
 import data.Data
 import pages.user.AddTrackPage
+import pages.user.AllMusicPage
 import pages.user.CollectionPage
 import pages.user.LoginPage
 import pages.user.RegisterPage
@@ -56,6 +57,24 @@ Given(~/^I have an account$/) { ->
     }
 }
 
+Given(~/^I open the "(.*?)" page$/) { String arg1 ->
+    switch (arg1) {
+        case 'Register':
+            to RegisterPage
+            break
+
+        case 'All Music':
+            to AllMusicPage
+            break
+
+        default:
+            assert false : "No page of name '" + arg1 + "'"
+    }
+}
+Given(~/^At least one track is listed$/) { ->
+    page.trackRows.size() != 0
+}
+
 When(~/^I fill in user details "(.*?)" "(.*?)"$/) { String arg1, String arg2 ->
     page.username = arg1
     page.password = arg2
@@ -104,6 +123,16 @@ When(~/^I add a new track$/) { ->
     page.createButton.click()
 }
 
+When(~/^I like a track$/) { ->
+    Data.previousGrade = page.row(0).grade
+    page.row(0).like.click()
+}
+
+When(~/^I unlike a track$/) { ->
+    Data.previousGrade = page.row(0).grade
+    page.row(0).unlike.click()
+}
+
 Then(~/^I should be redirected to the "(.*?)" page$/) { String arg1 ->
     switch(arg1) {
         case 'Show User':
@@ -135,4 +164,10 @@ Then(~/^I should see the track in my collection$/) { ->
     assert page.containsTrack(Data.tracks[0])
 }
 
+Then(~/^The track grade has increased$/) { ->
+    assert Data.previousGrade < page.row(0).grade
+}
 
+Then(~/^The grade has decreased$/) { ->
+    assert Data.previousGrade > page.row(0).grade
+}
