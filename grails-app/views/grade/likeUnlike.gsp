@@ -42,14 +42,6 @@
         </tr>
     </g:each>
 
-
-    <!--  <tr class="active">
-        <td>Product1</td>
-        <td>23/11/2013</td>
-        <td>Pending</td>
-     </tr> -->
-
-
 </tbody>
 
     </tbody>

@@ -5,14 +5,7 @@ import grails.transaction.Transactional
 @Transactional
 class GradeService {
 
-
     UserService userService
-
-    def serviceMethod() {
-
-    }
-
-
 
     def like(Track track)
     { User currentUser = userService.currentUser()

@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="page-body" role="main">
-    <h1>Voila votre bibliothèque</h1>
+    <h1>Ma Bibliothèque</h1>
 
 
     <div id="collection-list">

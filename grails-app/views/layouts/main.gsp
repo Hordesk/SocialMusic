@@ -42,24 +42,19 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    %{--<li><a href="${createLink(controller:'index', action:'index')}">Membres</a></li>--}%
-<sec:ifLoggedIn>
-                    <li><a href="${createLink(controller:'grade', action: 'likeUnlike')}">Noter une musique</a></li>
-    </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <li><a  href="${createLink(controller:'user', action: 'register')}">${message(code: 'user.register.label', default: 'S\'enregistrer')}</a></li>
                         <li><a  href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>
-
                     </sec:ifNotLoggedIn>
-                %{--blok de l'utilisateur courrent--}%
-                    <sec:ifLoggedIn>
 
-                        <li><a  href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
+                    <sec:ifLoggedIn>
+                        <li><a href="${createLink(controller:'grade', action: 'likeUnlike')}">${message(code: 'track.add', default: 'Toutes les musiques')}</a></li>
+
                         <li><a  href="${createLink(controller:'user', action: 'bibliotheque')}">${message(code: 'track.showList', default: 'Ma bibliothèque')}</a></li>
+                        <li><a  href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
 
                         <li> <a id="currentUser" href="${createLink(controller:'user', action: 'edit', id : userInstance.id)}"><sec:username /> </a> </li>
                         <li> <a id="logout"  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
-
                     </sec:ifLoggedIn>
                 %{--blok de l'utilisateur courrent--}%
                 </ul>
