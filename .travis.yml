@@ -1,7 +1,12 @@
 language: groovy
 jdk:
 - oraclejdk8
-script: './grailsw test-app :unit'
+before-script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar"
+  - "java -jar selenium-server-standalone-2.43.1.jar > /dev/null &"
+script: './grailsw test-app :unit functional:cucumber'
 deploy:
   provider: heroku
   api_key: "11cf512c-704c-4243-ad1f-6f26edaaf4a1"
