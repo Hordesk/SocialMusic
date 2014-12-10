@@ -17,12 +17,6 @@ class UserIntegrationSpec extends Specification{
         params["id"] = 1
     }
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
     void "should register user"() {
 
         //FIXME: test not working, controller.response properties are null
@@ -45,7 +39,7 @@ class UserIntegrationSpec extends Specification{
 //
 //        User.first().getAuthorities().size() == 1
 //        User.first().getAuthorities().first() == SecRole.findByAuthority("ROLE_USER")
-
+        expect:
         assert true
     }
 }
