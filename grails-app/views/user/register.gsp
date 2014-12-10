@@ -3,11 +3,11 @@
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
-    <title><g:message code="default.register.label" default="Register" /></title>
+    <title><g:message code="default.register.label" default="S\'enregistrer" /></title>
 </head>
 <body>
 <div id="create-user" class="content scaffold-create" role="main">
-    <h1><g:message code="default.register.label" default="Register"  /></h1>
+    <h1><g:message code="default.register.label" default="S\'enregistrer"  /></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -20,10 +20,12 @@
     </g:hasErrors>
     <g:form url="[resource:userInstance, action:'save']" >
         <fieldset class="form">
-            <g:render template="form"/>
+            <g:render template="form" />
         </fieldset>
         <fieldset class="buttons">
-            <g:submitButton name="create" class="save" value="${message(code: 'default.button.register.label', default: 'Sign-up')}" />
+            <button type="submit" class="btn btn-default">Valider</button>
+
+            %{--<g:submitButton name="create" class="save" value="${message(code: 'default.button.register.label', default: 'Valider')}" />--}%
         </fieldset>
     </g:form>
 </div>
