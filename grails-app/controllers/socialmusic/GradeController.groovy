@@ -1,5 +1,6 @@
 package socialmusic
 
+import org.springframework.security.access.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -125,12 +126,14 @@ class GradeController {
 
     def like(Long id)
     {   def trackInstance=Track.findById(id)
+    @Secured(['ROLE_USER'])
         gradeService.like(trackInstance)
         redirect(action: "likeUnlike")
 
     }
     def unlike(Long id)
     {   def trackInstance=Track.findById(id)
+    @Secured(['ROLE_USER'])
         gradeService.unlike(trackInstance)
         redirect(action: "likeUnlike")
     }

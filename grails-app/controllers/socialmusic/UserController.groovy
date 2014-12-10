@@ -112,6 +112,7 @@ class UserController {
         }
     }
 
+    @Secured(['ROLE_USER'])
     def bibliotheque(){
      //   def map = [book: Book.get(params.id)]
       //  render(view: "display", model: map)
