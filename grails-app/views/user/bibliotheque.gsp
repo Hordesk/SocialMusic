@@ -17,14 +17,16 @@
     <h1>Voila votre bibliotheque</h1>
 
 
-    <div id="user-list">
+    <div id="collection-list">
 
         <table class="table">
-   <caption>Bibliotheque</caption>
+   <caption>Collection</caption>
    <thead>
       <tr>
          <th>Artist</th>
-         <th>album</th>
+         <th>Album</th>
+         <th>Title</th>
+
 
       </tr>
    </thead>
@@ -34,6 +36,7 @@
 
        <td>${grade.track.artist}</td>
        <td>${grade.track.album}</td>
+       <td>${grade.track.title}</td>
 
    </tr>
    </g:each>

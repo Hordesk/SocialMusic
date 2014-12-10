@@ -1,4 +1,6 @@
 import data.Data
+import pages.user.AddTrackPage
+import pages.user.CollectionPage
 import pages.user.LoginPage
 import pages.user.RegisterPage
 import pages.user.ShowUserPage
@@ -7,6 +9,10 @@ import socialmusic.User
 import static cucumber.api.groovy.EN.*
 
 Given(~/^I'm not logged in$/) { ->
+    if(page.isLoggedIn()) {
+        page.logoutButton.click()
+    }
+
     assert !page.isLoggedIn()
 }
 
@@ -16,6 +22,28 @@ Given(~/^I open the register page$/) { ->
 }
 
 Given(~/^I'm logged in$/) { ->
+    if(!page.isLoggedIn()) {
+        //Given("I have an account")
+
+        def user = new User(Data.users[0])
+
+        if(User.findByUsername(Data.users[0].username) == null) {
+            def userService = appCtx.getBean("userService")
+            userService.registerUser(user)
+        }
+
+        //When(~/^I go to the login page$/)
+
+        to LoginPage
+
+        //When(~/^I login with my user details$/)
+
+        page.username = Data.users[0].username
+        page.password = Data.users[0].password
+
+        page.submitLoginButton.click()
+    }
+
     assert page.isLoggedIn()
 }
 
@@ -66,6 +94,16 @@ When(~/^I login with incorrect details$/) { ->
     page.submitLoginButton.click()
 }
 
+When(~/^I add a new track$/) { ->
+    to AddTrackPage
+
+    page.trackTitle = Data.tracks[0].title
+    page.trackArtist = Data.tracks[0].artist
+    page.trackAlbum = Data.tracks[0].album
+
+    page.createButton.click()
+}
+
 Then(~/^I should be redirected to the "(.*?)" page$/) { String arg1 ->
     switch(arg1) {
         case 'Show User':
@@ -90,4 +128,11 @@ Then(~/^I should see an error message$/) { ->
     at LoginPage
     assert page.errorMessage.isPresent()
 }
+
+Then(~/^I should see the track in my collection$/) { ->
+    to CollectionPage
+
+    assert page.containsTrack(Data.tracks[0])
+}
+
 

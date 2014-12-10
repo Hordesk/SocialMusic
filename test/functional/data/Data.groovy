@@ -10,4 +10,8 @@ class Data {
             [id: 1, username: "DanyBoy", password: "mypass"]
     ]
 
+    static public def tracks = [
+            [title: "In This River", artist: "Black Label Society", album: 'Mafia']
+    ]
+
 }
