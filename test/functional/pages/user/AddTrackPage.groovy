@@ -1,7 +1,7 @@
 package pages.user
 
 class AddTrackPage extends LayoutPage{
-    static url = "/SocialMusic/track/create"
+    static url = "track/create"
 
     static at = {
         title ==~ /Create Track/

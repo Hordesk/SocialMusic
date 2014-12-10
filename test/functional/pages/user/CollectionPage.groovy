@@ -4,7 +4,7 @@ import module.TrackRow
 import socialmusic.Track
 
 class CollectionPage extends LayoutPage {
-    static url = "/SocialMusic/user/bibliotheque"
+    static url = "user/bibliotheque"
 
     static content = {
         trackTable {
