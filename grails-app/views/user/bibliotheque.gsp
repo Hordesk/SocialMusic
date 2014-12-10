@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mehdi
-  Date: 11/11/2014
-  Time: 23:40
---%>
-
 <!DOCTYPE html>
 <html>
 <head>
