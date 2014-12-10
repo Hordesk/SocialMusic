@@ -1,10 +1,10 @@
 language: groovy
 jdk:
 - oraclejdk8
-before-script:
+before-install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - "sleep 10"
+before-script:
   - "wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar"
   - "java -jar selenium-server-standalone-2.43.1.jar > /dev/null &"
   - "sleep 10"
