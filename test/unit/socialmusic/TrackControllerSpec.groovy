@@ -59,7 +59,7 @@ class TrackControllerSpec extends Specification {
             controller.save(track)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/'
+            response.redirectedUrl == '/user/bibliotheque'
             1 * trackService.addTrack(_ as Track)
     }
 
