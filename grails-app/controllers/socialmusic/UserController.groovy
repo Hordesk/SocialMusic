@@ -89,10 +89,14 @@ class UserController {
         }
     }
 
-
+    @Secured(['ROLE_USER'])
     def bibliotheque(){
         def grades = trackService.getBibliothequeByUser()
-        def test=0
+        render(view: "bibliotheque", model:  [grades:grades])
+    }
+
+    def collectionForUser(User userInstance) {
+        def grades = trackService.getCollectionByUserId(userInstance.id)
         render(view: "bibliotheque", model:  [grades:grades])
     }
 
