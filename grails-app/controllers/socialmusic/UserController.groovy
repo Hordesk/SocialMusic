@@ -20,7 +20,6 @@ class UserController {
     }
 
     def show(User userInstance) {
-//redirect(controller: 'home', action: 'index')
         def grades = trackService.getBibliothequeByUser()
 
         render(view: "bibliotheque", model:  [grades:grades])
@@ -53,7 +52,7 @@ class UserController {
         }
     }
 
-    @Secured(['ROLE_USER'])
+    //@Secured(['ROLE_USER'])
     def edit(User userInstance) {
         respond userInstance
     }
@@ -119,14 +118,14 @@ class UserController {
         render(view: "bibliotheque", model:  [grades:grades])
     }
 
-    @Secured(['ROLE_USER'])
+   // @Secured(['ROLE_USER'])
     def like(Long id) {
         def trackInstance=Track.findById(id)
         gradeService.like(trackInstance)
         redirect(action: "bibliotheque")
     }
 
-    @Secured(['ROLE_USER'])
+   // @Secured(['ROLE_USER'])
     def unlike(Long id) {
         def trackInstance=Track.findById(id)
         gradeService.unlike(trackInstance)

@@ -19,9 +19,9 @@
                 <g:sortableColumn property="Titre" title="${message(code: 'track.album.label', default: 'Album')}" />
                 <g:sortableColumn property="Titre" title="${message(code: 'track.artist.label', default: 'Artiste')}" />
 
-         <th>Grade</th>
+         <th>Note</th>
          <th>Like</th>
-         <th>Unlike</th>
+         <th>Dislike</th>
 
             </tr>
             </thead>
