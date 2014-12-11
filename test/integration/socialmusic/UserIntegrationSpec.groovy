@@ -36,7 +36,7 @@ class UserIntegrationSpec extends Specification{
     }
 
 
-    def "test that update a user password scrambles it before saving it"() {
+    def "test that update a user password scramble it before saving it"() {
         given: "a user with a password"
         User User = new User(
                 username: "user",
