@@ -16,11 +16,11 @@ class TrackRow extends Module {
             cellText (0)
         }
 
-        artist {
+        album {
             cellText (1)
         }
 
-        album {
+        artist {
             cellText (2)
         }
 

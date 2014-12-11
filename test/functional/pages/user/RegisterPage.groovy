@@ -4,7 +4,7 @@ class RegisterPage extends LayoutPage{
     static url = "user/register"
 
     static at = {
-        title ==~ /Register/
+        title ==~ /S\'enregistrer/
     }
 
     static content = {
