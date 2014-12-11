@@ -13,6 +13,7 @@
 		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'full.css')}" type="text/css">
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap-theme.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
         <link rel="script" href="${resource(dir: 'js', file: 'bootstrap.js')}">
@@ -38,30 +39,30 @@
                     <span class="icon-bar"></span>
 
                 </button>
-                <a class="navbar-brand" href="${createLink(controller:'index', action:'index')}">Social Music</a>
+                <a class="navbar-brand" style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'index', action:'index')}">Social Music</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <sec:ifNotLoggedIn>
-                        <li><a  href="${createLink(controller:'user', action: 'register')}">${message(code: 'user.register.label', default: 'S\'enregistrer')}</a></li>
-                        <li><a  href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>
+                        <li><a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'user', action: 'register')}">${message(code: 'user.register.label', default: 'S\'enregistrer')}</a></li>
+                        <li><a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>
                     </sec:ifNotLoggedIn>
 
                     <sec:ifLoggedIn>
-                        <li><a href="${createLink(controller:'grade', action: 'likeUnlike')}">${message(code: 'track.add', default: 'Toutes les musiques')}</a></li>
+                        <li><a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'grade', action: 'likeUnlike')}">${message(code: 'track.add', default: 'Toutes les musiques')}</a></li>
 
-                        <li><a  href="${createLink(controller:'user', action: 'bibliotheque')}">${message(code: 'track.showList', default: 'Ma bibliothèque')}</a></li>
-                        <li><a  href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
+                        <li><a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'user', action: 'bibliotheque')}">${message(code: 'track.showList', default: 'Ma bibliothèque')}</a></li>
+                        <li><a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
 
-                        <li> <a id="currentUser" href="${createLink(controller:'user', action: 'edit', id : userInstance.id)}"><sec:username /> </a> </li>
-                        <li> <a id="logout"  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
+                        <li> <a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" id="currentUser" href="${createLink(controller:'user', action: 'edit', id : userInstance.id)}"><sec:username /> </a> </li>
+                        <li> <a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')"id="logout"  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
                     </sec:ifLoggedIn>
                 %{--blok de l'utilisateur courrent--}%
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
     </div>
-
+<center>
     <div class="container">
 
             <br>
@@ -69,9 +70,9 @@
         <br>
             <g:layoutBody/>
             <r:layoutResources />
-
+        <div class="hero-unit" ></div>
     </div><!-- /.container -->
-
+</center>
 </body>
 
 
