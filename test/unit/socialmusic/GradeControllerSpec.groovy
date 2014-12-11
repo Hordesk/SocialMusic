@@ -5,7 +5,7 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(GradeController)
-@Mock(Grade)
+@Mock([Grade, Track, User])
 class GradeControllerSpec extends Specification {
 
     def populateValidParams(params) {
@@ -147,5 +147,61 @@ class GradeControllerSpec extends Specification {
         Grade.count() == 0
         response.redirectedUrl == '/grade/index'
         flash.message != null
+    }
+
+    void "likeunlike should return all tracks and total grade"() {
+        given:""
+        User user1 =new User(username:"User",password: "password")
+        user1.save(flush : true)
+        def track1 = new Track(title: "Die boten", artist: "Die Apocalypschen Reiter", album: 'Moral & Wahnsinn')
+        track1.save(flush: true)
+        Grade grade1 = new Grade(user: user1, track: track1, grade: (Integer) 0)
+        grade1.save flush: true
+
+        User user2 =new User(username:"Alban",password: "undeux")
+        user2.save(flush : true)
+        def track2 = new Track(title: "Erwache", artist: "Die Apocalypschen Reiter", album: 'Moral & Wahnsinn')
+        track2.save(flush: true)
+        Grade grade2 = new Grade(user: user2, track: track2, grade: (Integer) 1)
+        grade2.save flush: true
+
+        when: "likeUnlike is called"
+        controller.likeUnlike()
+
+        then: "the page is shown with all tracks"
+        view == '/grade/likeUnlike'
+        model.tracks == [track1, track2]
+    }
+
+    void "should like the track"() {
+        given:"A track"
+        def track1 = new Track(title: "Die boten", artist: "Die Apocalypschen Reiter", album: 'Moral & Wahnsinn')
+        track1.save(flush: true)
+
+        and:"a grade service"
+        def gradeService = Mock(GradeService)
+        controller.gradeService = gradeService
+
+        when:"the user likes the track"
+        controller.like(track1.id)
+
+        then:"like is called for the track"
+        1 * gradeService.like(track1)
+    }
+
+    void "should unlike the track"() {
+        given:"A track"
+        def track1 = new Track(title: "Die boten", artist: "Die Apocalypschen Reiter", album: 'Moral & Wahnsinn')
+        track1.save(flush: true)
+
+        and:"a grade service"
+        def gradeService = Mock(GradeService)
+        controller.gradeService = gradeService
+
+        when:"the user unlikes the track"
+        controller.unlike(track1.id)
+
+        then:"like is called for the track"
+        1 * gradeService.unlike(track1)
     }
 }
