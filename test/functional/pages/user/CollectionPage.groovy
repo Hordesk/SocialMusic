@@ -6,6 +6,10 @@ import socialmusic.Track
 class CollectionPage extends LayoutPage {
     static url = "user/bibliotheque"
 
+    static at = {
+        title ==~ /Bibliothèque/
+    }
+
     static content = {
         trackTable {
             $("div[id='collection-list'] table", 0)
