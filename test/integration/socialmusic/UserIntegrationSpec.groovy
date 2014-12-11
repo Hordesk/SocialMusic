@@ -1,44 +1,68 @@
 package socialmusic
 
-import spock.lang.*
+import grails.plugin.springsecurity.SpringSecurityService
+import grails.test.mixin.TestFor
+import grails.validation.ValidationException
+import org.springframework.security.crypto.password.PasswordEncoder
+import spock.lang.Specification
 
 /**
  *
  */
+@TestFor(User)
 class UserIntegrationSpec extends Specification{
 
-    def userService
+    def "test add two users with the same nick"() {
+        given: "two users with the same Username"
+        def userA = new User(
+                username:"username",
+                password: "password"
+        )
 
-    def populateValidParams(params) {
-        assert params != null
-        params["username"] = 'user2'
-        params["password"] = 'mdp2'
-        params["id"] = 1
+        def userB = new User(
+                username:"username",
+                password: "password"
+        )
+
+        mockForConstraintsTests(User, [userA, userB])
+
+        when: "we add them to the database"
+        userA.save(failOnError: true, flush: true)
+        userB.save(flush: true)
+
+
+        then: "saving the second user throw a ValidationException"
+        thrown ValidationException
     }
 
-    void "should register user"() {
 
-        //FIXME: test not working, controller.response properties are null
-//        given:"a controller and a valid user"
-//        def controller = new UserController()
-//        controller.userService = userService
-//
-//        populateValidParams(controller.params)
-//        def user = new User(controller.params)
-//
-//        when: "user is saved"
-//        controller.save(user)
-//
-//        then:"A redirect is issued to the show action"
-//        controller.response.redirectedUrl == '/user/show/1'
-//        controller.flash.message != null
-//
-//        User.count() == 1
-//        SecUserSecRole.count() == 1
-//
-//        User.first().getAuthorities().size() == 1
-//        User.first().getAuthorities().first() == SecRole.findByAuthority("ROLE_USER")
-        expect:
-        assert true
+    def "test that update a user password scrambles it before saving it"() {
+        given: "a user with a password"
+        User User = new User(
+                username: "user",
+                password: "password",
+        )
+        User.save(flush: true)
+
+        and: "the spring security service"
+        User.springSecurityService = Mock(SpringSecurityService)
+        User.springSecurityService.passwordEncoder >> Mock(PasswordEncoder)
+
+        and: "a new password"
+        String newPassword = "newPassword"
+
+        when: "updating his password"
+        User.password = newPassword
+        User.save(flush: true)
+
+        then: "password has been scrambled"
+        1 * User.springSecurityService.encodePassword(newPassword)
+
+        when: "updating User without changing the password"
+        User.username = "test"
+        User.save(flush: true)
+
+        then: "no need to scrambled anything"
+        0 * User.springSecurityService.encodePassword(newPassword)
     }
 }
