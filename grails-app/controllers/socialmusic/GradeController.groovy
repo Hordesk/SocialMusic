@@ -1,5 +1,6 @@
 package socialmusic
 
+import org.springframework.security.access.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -102,35 +103,30 @@ class GradeController {
         }
     }
 
-    def likeUnlike(){
+    def likeUnlike() {
+        def tracks = Track.list();
+        for(track in tracks) {
 
-        /*
-        select sum(grade)as gradeTotal from track,grade
-                where grade.track.id=track.id
-                groupe by track
+            def grades = Grade.findAllByTrack(track)
+            for(grade in grades) {
+                track.totalGrade+=grade.grade
+            }
 
-                results = Work.executeQuery('select w.artist.style, count(w) from Work as w group by w.artist.style')
-        * */
-
-        def tracks=  Track.list();
-         for(track in tracks)
-        {
-         def grades = Grade.findAllByTrack(track)
-            for(grade in grades)
-            {track.totalGrade+=grade.grade}
         }
 
          render(view: "likeUnlike", model:  [tracks:tracks])
     }
 
-    def like(Long id)
-    {   def trackInstance=Track.findById(id)
+    @Secured(['ROLE_USER'])
+    def like(Long id) {
+        def trackInstance=Track.findById(id)
         gradeService.like(trackInstance)
         redirect(action: "likeUnlike")
-
     }
-    def unlike(Long id)
-    {   def trackInstance=Track.findById(id)
+
+    @Secured(['ROLE_USER'])
+    def unlike(Long id) {
+        def trackInstance=Track.findById(id)
         gradeService.unlike(trackInstance)
         redirect(action: "likeUnlike")
     }

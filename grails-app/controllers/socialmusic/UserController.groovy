@@ -10,6 +10,7 @@ class UserController {
 
     UserService userService
     TrackService trackService
+    GradeService gradeService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -111,13 +112,26 @@ class UserController {
         }
     }
 
-    def bibliotheque(){
-     //   def map = [book: Book.get(params.id)]
-      //  render(view: "display", model: map)
-//redirect(controller: 'home', action: 'index')
-        def grades = trackService.getBibliothequeByUser()
 
+    def bibliotheque(){
+        def grades = trackService.getBibliothequeByUser()
+        def test=0
         render(view: "bibliotheque", model:  [grades:grades])
     }
+
+    @Secured(['ROLE_USER'])
+    def like(Long id) {
+        def trackInstance=Track.findById(id)
+        gradeService.like(trackInstance)
+        redirect(action: "bibliotheque")
+    }
+
+    @Secured(['ROLE_USER'])
+    def unlike(Long id) {
+        def trackInstance=Track.findById(id)
+        gradeService.unlike(trackInstance)
+        redirect(action: "bibliotheque")
+    }
+
 
 }

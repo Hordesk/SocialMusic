@@ -6,14 +6,23 @@
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxBinary
 
-
 driver = {
-    final File firefoxPath = new File(System.getProperty("MYAPP.firefox.path", "/usr/bin/firefox"))
-    FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath)
-    firefoxBinary.setEnvironmentProperty("DISPLAY", ":99.0")
-    driverInstance = new FirefoxDriver(firefoxBinary, null)
-    def driver = new FirefoxDriver()
-    driver
+    def driverInstance
+    def customFirefox = System.getProperty("SocialMusic_firefox_path")
+    if(customFirefox) {
+        final File firefoxPath = new File(customFirefox)
+        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath)
+
+        def displayPort = System.getProperty("SocialMusic_display")
+        if(displayPort != null)
+            firefoxBinary.setEnvironmentProperty("DISPLAY", displayPort)
+
+        driverInstance = new FirefoxDriver(firefoxBinary, null)
+
+    }else{
+        driverInstance = new FirefoxDriver()
+    }
+    driverInstance
 }
 
 baseNavigatorWaiting = true

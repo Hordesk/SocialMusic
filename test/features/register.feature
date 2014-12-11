@@ -5,7 +5,7 @@ Feature: register new user
 
 Scenario: new user
   Given I'm not logged in
-  And I open the register page
+  And I open the "Register" page
   When I fill in user details "Dany" "mypass"
   And click Sign-up
   Then I should be redirected to the "Show User" page

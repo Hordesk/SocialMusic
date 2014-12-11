@@ -14,10 +14,10 @@
 
 <body>
 <div id="page-body" role="main">
-    <h1>Liste des musique</h1>
+    <h1>Toute la musique</h1>
 
 
-    <div id="user-list">
+    <div id="tracks-list">
 <table class="table">
     <thead>
     <tr>
@@ -37,18 +37,10 @@
             <td>${track.artist}</td>
             <td>${track.album}</td>
             <td>${track.totalGrade}</td>
-            <td> <g:link controller="grade" action="like" id="${track.id}"><img src="../images/like.png" alt="" border=3 height=25 width=25/>Like</g:link></td>
+            <td> <g:link controller="grade" action="like" id="${track.id}"><img src="../images/like.png" alt="" border=3 height=25 width=25/></g:link></td>
             <td> <g:link controller="grade" action="unlike" id="${track.id}"><img src="../images/dislike.png" alt="" border=3 height=25 width=25/></g:link></td>
         </tr>
     </g:each>
-
-
-    <!--  <tr class="active">
-        <td>Product1</td>
-        <td>23/11/2013</td>
-        <td>Pending</td>
-     </tr> -->
-
 
 </tbody>
 

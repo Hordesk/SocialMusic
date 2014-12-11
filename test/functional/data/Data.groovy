@@ -14,4 +14,6 @@ class Data {
             [title: "In This River", artist: "Black Label Society", album: 'Mafia']
     ]
 
+    static def previousGrade
+
 }

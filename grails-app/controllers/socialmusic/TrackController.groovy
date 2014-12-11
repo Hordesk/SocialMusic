@@ -38,15 +38,14 @@ class TrackController {
         }
             trackService.addTrack(trackInstance)
 
-        /*request.withFormat {
+        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'track.label', default: 'Track'), trackInstance.id])
                 redirect trackInstance
             }
             '*' { respond trackInstance, [status: CREATED] }
 
-        }*/
-        redirect (uri:'/')
+        }
 
 
     }

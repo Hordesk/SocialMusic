@@ -22,13 +22,7 @@ class TrackService {
 
     def getBibliothequeByUser() {
         User currentUser = userService.currentUser()
-      /*  def gradeList=currentUser? Grade.findAllByUser(currentUser):[]
-        def bibliotheque = Track.findAllByGrades(gradeList,sort:"artist", order:"asc")
-          return bibliotheque*/
-      Grade.findAllByUser(currentUser)
-      /*  Track.where{
-            grades.grade==0
-        }*/
+        Grade.findAllByUser(currentUser)
     }
 
 }
