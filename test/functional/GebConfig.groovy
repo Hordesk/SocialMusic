@@ -8,14 +8,11 @@ import org.openqa.selenium.firefox.FirefoxBinary
 
 driver = {
     def driverInstance
-    def customFirefox = System.getProperty("SocialMusic_firefox_path")
-    if(customFirefox) {
-        final File firefoxPath = new File(customFirefox)
+    def displayPort = System.getProperty("SocialMusic_display")
+    if(displayPort) {
+        final File firefoxPath = new File("which firefox".execute().text)
         FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath)
-
-        def displayPort = System.getProperty("SocialMusic_display")
-        if(displayPort != null)
-            firefoxBinary.setEnvironmentProperty("DISPLAY", displayPort)
+        firefoxBinary.setEnvironmentProperty("DISPLAY", displayPort)
 
         driverInstance = new FirefoxDriver(firefoxBinary, null)
 

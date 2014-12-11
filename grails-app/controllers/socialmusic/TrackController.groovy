@@ -36,18 +36,10 @@ class TrackController {
             respond trackInstance.errors, view:'create'
             return
         }
-            trackService.addTrack(trackInstance)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'track.label', default: 'Track'), trackInstance.id])
-                redirect trackInstance
-            }
-            '*' { respond trackInstance, [status: CREATED] }
+        trackService.addTrack(trackInstance)
 
-        }
-
-
+        redirect( controller: 'user', action: 'bibliotheque')
     }
 
     def edit(Track trackInstance) {

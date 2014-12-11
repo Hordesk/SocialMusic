@@ -65,21 +65,21 @@ class UserControllerSpec extends Specification {
         1 * userService.registerUser(_ as User)
     }
 
-//    void "Test that the show action returns the correct model"() {
-//        when:"The show action is executed with a null domain"
-//            controller.show(null)
-//
-//        then:"A 404 error is returned"
-//            response.status == 404
-//
-//        when:"A domain instance is passed to the show action"
-//            populateValidParams(params)
-//            def user = new User(params)
-//            controller.show(user)
-//
-//        then:"A model is populated containing the domain instance"
-//            model.userInstance == user
-//    }
+    void "Test that the show action returns the correct model"() {
+        when:"The show action is executed with a null domain"
+            controller.show(null)
+
+        then:"A 404 error is returned"
+            response.status == 404
+
+        when:"A domain instance is passed to the show action"
+            populateValidParams(params)
+            def user = new User(params)
+            controller.show(user)
+
+        then:"A model is populated containing the domain instance"
+            model.userInstance == user
+    }
 
     void "Test that the edit action returns the correct model"() {
         when:"The edit action is executed with a null domain"
@@ -125,32 +125,6 @@ class UserControllerSpec extends Specification {
 
         then:"A redirect is issues to the show action"
             response.redirectedUrl == "/user/show/$user.id"
-            flash.message != null
-    }
-
-    void "Test that the delete action deletes an instance if it exists"() {
-        when:"The delete action is called for a null instance"
-            request.contentType = FORM_CONTENT_TYPE
-            controller.delete(null)
-
-        then:"A 404 is returned"
-            response.redirectedUrl == '/user/index'
-            flash.message != null
-
-        when:"A domain instance is created"
-            response.reset()
-            populateValidParams(params)
-            def user = new User(params).save(flush: true)
-
-        then:"It exists"
-            User.count() == 1
-
-        when:"The domain instance is passed to the delete action"
-            controller.delete(user)
-
-        then:"The instance is deleted"
-            User.count() == 0
-            response.redirectedUrl == '/user/index'
             flash.message != null
     }
 }

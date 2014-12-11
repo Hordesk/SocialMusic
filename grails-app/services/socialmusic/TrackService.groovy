@@ -25,6 +25,10 @@ class TrackService {
         Grade.findAllByUser(currentUser)
     }
 
+    def getCollectionByUserId(id) {
+        Grade.findAllByUser(User.findById(id))
+    }
+
 }
 
 

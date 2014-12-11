@@ -20,10 +20,7 @@ class UserController {
     }
 
     def show(User userInstance) {
-//redirect(controller: 'home', action: 'index')
-        def grades = trackService.getBibliothequeByUser()
-
-        render(view: "bibliotheque", model:  [grades:grades])
+        respond userInstance
     }
 
     def register() {
@@ -53,7 +50,7 @@ class UserController {
         }
     }
 
-    @Secured(['ROLE_USER'])
+    //@Secured(['ROLE_USER'])
     def edit(User userInstance) {
         respond userInstance
     }
@@ -82,26 +79,6 @@ class UserController {
         }
     }
 
-    @Secured(['ROLE_USER'])
-    @Transactional
-    def delete(User userInstance) {
-
-        if (userInstance == null) {
-            notFound()
-            return
-        }
-
-        userInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
     protected void notFound() {
         request.withFormat {
             form multipartForm {
@@ -112,21 +89,25 @@ class UserController {
         }
     }
 
-
+    @Secured(['ROLE_USER'])
     def bibliotheque(){
         def grades = trackService.getBibliothequeByUser()
-        def test=0
         render(view: "bibliotheque", model:  [grades:grades])
     }
 
-    @Secured(['ROLE_USER'])
+    def collectionForUser(User userInstance) {
+        def grades = trackService.getCollectionByUserId(userInstance.id)
+        render(view: "bibliotheque", model:  [grades:grades])
+    }
+
+   @Secured(['ROLE_USER'])
     def like(Long id) {
         def trackInstance=Track.findById(id)
         gradeService.like(trackInstance)
         redirect(action: "bibliotheque")
     }
 
-    @Secured(['ROLE_USER'])
+   @Secured(['ROLE_USER'])
     def unlike(Long id) {
         def trackInstance=Track.findById(id)
         gradeService.unlike(trackInstance)

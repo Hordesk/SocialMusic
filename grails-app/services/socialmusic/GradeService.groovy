@@ -7,15 +7,13 @@ class GradeService {
 
     UserService userService
 
-    def like(Track track)
-    { User currentUser = userService.currentUser()
+    def like(Track track) {
+        User currentUser = userService.currentUser()
         def grade= Grade.findByTrackAndUser(track,currentUser)
-        if(grade)
-        {
+        if (grade) {
             grade.setGrade(1)
             grade.save flush: true
-        }
-        else{
+        } else {
             grade = new Grade(user: currentUser, track: track, grade: (Integer) 1)
             if (currentUser != null && grade.hasErrors() != true) {
                 //Ajouter une grade avec une Grade.grade = 1 et Grade.user = currentUser
@@ -24,16 +22,13 @@ class GradeService {
         }
     }
 
-    def unlike(Track track)
-    {
+    def unlike(Track track) {
         User currentUser = userService.currentUser()
         def grade= Grade.findByTrackAndUser(track,currentUser)
-        if(grade)
-        {
+        if (grade) {
             grade.setGrade(-1)
             grade.save flush: true
-        }
-        else{
+        } else {
             grade = new Grade(user: currentUser, track: track, grade: (Integer) -1)
             if (currentUser != null && grade.hasErrors() != true) {
                 //Ajouter une grade avec une Grade.grade = 1 et Grade.user = currentUser

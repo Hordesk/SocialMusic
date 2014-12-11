@@ -6,8 +6,8 @@ before-install:
   - "sh -e /etc/init.d/xvfb start"
   - sleep 10
 before-script:
-  - "wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar"
-  - "export DISPLAY=:99.0 xvfb-run --auto-servernum --server-num=0 nohup java - jar selenium-server-standalone-2.43.1.jar > /dev/null &"
+  - "wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.44.0.jar"
+  - "export DISPLAY=:99.0 xvfb-run --auto-servernum --server-num=0 nohup java - jar selenium-server-standalone-2.44.0.jar > /dev/null &"
   - "sleep 10"
 script: './grailsw test-app :unit functional:cucumber -DSocialMusic_display=":99.0"'
 deploy:
