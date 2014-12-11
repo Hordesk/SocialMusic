@@ -14,6 +14,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap-theme.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'full.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
         <link rel="script" href="${resource(dir: 'js', file: 'bootstrap.js')}">
 		<g:layoutHead/>
@@ -38,27 +39,27 @@
                     <span class="icon-bar"></span>
 
                 </button>
-                <a class="navbar-brand" href="${createLink(controller:'index', action:'index')}">Social Music</a>
+                <a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" class="navbar-brand" href="${createLink(controller:'index', action:'index')}">Social Music</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     %{--<li><a href="${createLink(controller:'index', action:'index')}">Membres</a></li>--}%
 <sec:ifLoggedIn>
-                    <li><a href="${createLink(controller:'grade', action: 'likeUnlike')}">Noter une musique</a></li>
+                    <li><a  style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'grade', action: 'likeUnlike')}">Noter une musique</a></li>
     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
-                        <li><a  href="${createLink(controller:'user', action: 'register')}">${message(code: 'user.register.label', default: 'S\'enregistrer')}</a></li>
-                        <li><a  href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>
+                        <li><a  style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'user', action: 'register')}">${message(code: 'user.register.label', default: 'S\'enregistrer')}</a></li>
+                        <li><a  style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" href="${createLink(controller:'login')}">${message(code: 'user.login.label', default: 'Connexion')}</a></li>
 
                     </sec:ifNotLoggedIn>
                 %{--blok de l'utilisateur courrent--}%
                     <sec:ifLoggedIn>
 
-                        <li><a  href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
-                        <li><a  href="${createLink(controller:'user', action: 'bibliotheque')}">${message(code: 'track.showList', default: 'Ma bibliothèque')}</a></li>
+                        <li><a  style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')"  href="${createLink(controller:'Track', action: 'create')}">${message(code: 'track.add', default: 'Ajouter une musique')}</a></li>
+                        <li><a  style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')"  href="${createLink(controller:'user', action: 'bibliotheque')}">${message(code: 'track.showList', default: 'Ma bibliothèque')}</a></li>
 
-                        <li> <a id="currentUser" href="${createLink(controller:'user', action: 'edit', id : userInstance.id)}"><sec:username /> </a> </li>
-                        <li> <a id="logout"  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
+                        <li> <a style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" id="currentUser" href="${createLink(controller:'user', action: 'edit', id : userInstance.id)}"><sec:username /> </a> </li>
+                        <li> <a  style="background-image: url('${resource(dir: 'images', file: 'mus.jpg')}')" id="logout"  href="${createLink(controller:'myLogout')}">${message(code: 'user.logout.label', default: 'Deconnexion')}</a></li>
 
                     </sec:ifLoggedIn>
                 %{--blok de l'utilisateur courrent--}%
@@ -67,13 +68,15 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" >
 
             <br>
         <br>
-        <br>
+        <br><center>
             <g:layoutBody/>
             <r:layoutResources />
+    </center>
+        <div class="hero-unit" ></div>
 
     </div><!-- /.container -->
 
