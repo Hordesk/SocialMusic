@@ -9,7 +9,7 @@ before-script:
   - "wget http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar"
   - "export DISPLAY=:99.0 xvfb-run --auto-servernum --server-num=0 nohup java - jar selenium-server-standalone-2.43.1.jar > /dev/null &"
   - "sleep 10"
-script: './grailsw test-app :unit functional:cucumber -DSocialMusic_firefox_path="/usr/lib/firefox" -DSocialMusic_display=":99.0'
+script: './grailsw test-app :unit functional:cucumber -DSocialMusic_firefox_path="/usr/lib/firefox" -DSocialMusic_display=":99.0"'
 deploy:
   provider: heroku
   api_key: "11cf512c-704c-4243-ad1f-6f26edaaf4a1"
