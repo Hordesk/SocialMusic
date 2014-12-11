@@ -65,21 +65,21 @@ class UserControllerSpec extends Specification {
         1 * userService.registerUser(_ as User)
     }
 
-//    void "Test that the show action returns the correct model"() {
-//        when:"The show action is executed with a null domain"
-//            controller.show(null)
-//
-//        then:"A 404 error is returned"
-//            response.status == 404
-//
-//        when:"A domain instance is passed to the show action"
-//            populateValidParams(params)
-//            def user = new User(params)
-//            controller.show(user)
-//
-//        then:"A model is populated containing the domain instance"
-//            model.userInstance == user
-//    }
+    void "Test that the show action returns the correct model"() {
+        when:"The show action is executed with a null domain"
+            controller.show(null)
+
+        then:"A 404 error is returned"
+            response.status == 404
+
+        when:"A domain instance is passed to the show action"
+            populateValidParams(params)
+            def user = new User(params)
+            controller.show(user)
+
+        then:"A model is populated containing the domain instance"
+            model.userInstance == user
+    }
 
     void "Test that the edit action returns the correct model"() {
         when:"The edit action is executed with a null domain"

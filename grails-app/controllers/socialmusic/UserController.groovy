@@ -20,9 +20,7 @@ class UserController {
     }
 
     def show(User userInstance) {
-        def grades = trackService.getBibliothequeByUser()
-
-        render(view: "bibliotheque", model:  [grades:grades])
+        respond userInstance
     }
 
     def register() {
