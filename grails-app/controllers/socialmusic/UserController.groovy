@@ -79,26 +79,6 @@ class UserController {
         }
     }
 
-    @Secured(['ROLE_USER'])
-    @Transactional
-    def delete(User userInstance) {
-
-        if (userInstance == null) {
-            notFound()
-            return
-        }
-
-        userInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
     protected void notFound() {
         request.withFormat {
             form multipartForm {
