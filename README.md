@@ -38,8 +38,6 @@ Contacts
 --------
 * El Mahadi BENHADDA
 
-* Rémi BENOIT
-
-* Mahtias FAURÉ ==> mathias.faure.31@gmail.com
+* Rémi BENOI
 
 * Jonas FRANCOIS
